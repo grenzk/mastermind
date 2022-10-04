@@ -65,7 +65,7 @@ class Mastermind
     pick_color
   end
 
-  def place_color
+  def place_color(count)
     color = pick_color
     puts 'Place your color. [1 - 4]'
 
@@ -84,6 +84,8 @@ class Mastermind
         end
       end
     end
+    system 'clear'
+    display_attempts(count)
     display_row
   end
 
@@ -106,16 +108,19 @@ class Mastermind
   end
 
   def play
-    place_color until slots_full?
+    10.downto(0) do |count|
+      place_color(count) until slots_full?
 
-    if secret_code.eql?(slots)
-      puts 'You win!'
-    else
+      break if won?
+
       guesses = secret_code.intersection(slots)
-      unless guesses.empty?
-        guesses.each { |color| smaller_slots << correct_position?(color) }
-      end
+      guesses.each { |color| smaller_slots << correct_position?(color) }
+
       display_feedback
+
+      slots.map! { '' }
+
+      smaller_slots.clear
     end
   end
 
