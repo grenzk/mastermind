@@ -2,8 +2,17 @@
 
 # Mastermind Game
 class Mastermind
-  COLORS = %w[red orange yellow green blue indigo violet].freeze
-  FEEDBACK = %w[black white].freeze
+  CHOICES = {
+    'r' => 'red',
+    'o' => 'orange',
+    'y' => 'yellow',
+    'g' => 'green',
+    'b' => 'blue',
+    'i' => 'indigo',
+    'v' => 'violet'
+  }.freeze
+  FEEDBACK = { false => 'white', true => 'black' }.freeze
+  COLORS = CHOICES.values
 
   attr_reader :slots, :smaller_slots
 
