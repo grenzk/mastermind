@@ -92,6 +92,15 @@ class Mastermind
     puts "| #{slots[0]} | #{slots[1]} | #{slots[2]} | #{slots[3]} |"
   end
 
+  def display_attempts(count)
+    puts "No. of attempts: #{count}"
+  end
+
+  def display_title
+    puts "\nGUESS THE SECRET CODE.\ncolors: ROYGBIV"
+    display_row
+  end
+
   def play
     place_color until slots_full?
 
