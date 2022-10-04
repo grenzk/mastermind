@@ -91,11 +91,11 @@ class Mastermind
 
   def display_feedback
     feedback = smaller_slots.map { |key| FEEDBACK[key] }
-    puts "\nfeedback: | #{feedback[0]} | #{feedback[1]} | #{feedback[2]} | #{feedback[3]} |\n "
+    puts "feedback: | #{feedback[0]} | #{feedback[1]} | #{feedback[2]} | #{feedback[3]} |\n "
   end
 
   def display_row
-    puts "| #{slots[0]} | #{slots[1]} | #{slots[2]} | #{slots[3]} |"
+    puts "\nslots: | #{slots[0]} | #{slots[1]} | #{slots[2]} | #{slots[3]} |\n "
   end
 
   def display_attempts(count)
