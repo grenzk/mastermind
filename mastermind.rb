@@ -87,8 +87,8 @@ class Mastermind
 
     play
 
+    puts "Well done codebreaker! Here's a cookie!" if won?
     puts 'You lose! The mastermind wins.' unless won?
-    puts "Well done codebreaker! Here's a cookie!"
   end
 end
 
