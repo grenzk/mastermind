@@ -14,11 +14,12 @@ class Mastermind
   FEEDBACK = { false => 'white', true => 'black' }.freeze
   COLORS = CHOICES.values
 
-  attr_reader :slots, :smaller_slots
+  attr_reader :secret_code, :slots, :smaller_slots
 
   def initialize
+    @secret_code = COLORS.sample(4)
     @slots = ['', '', '', '']
-    @smaller_slots = ['', '', '', '']
+    @smaller_slots = []
   end
 
   def slot_occupied?(idx)
