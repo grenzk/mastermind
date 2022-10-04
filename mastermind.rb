@@ -83,6 +83,11 @@ class Mastermind
     display_row
   end
 
+  def display_feedback
+    feedback = smaller_slots.map { |key| FEEDBACK[key] }
+    puts "\nfeedback: | #{feedback[0]} | #{feedback[1]} | #{feedback[2]} | #{feedback[3]} |\n "
+  end
+
   def display_row
     puts "| #{slots[0]} | #{slots[1]} | #{slots[2]} | #{slots[3]} |"
   end
@@ -97,6 +102,7 @@ class Mastermind
       unless guesses.empty?
         guesses.each { |color| smaller_slots << correct_position?(color) }
       end
+      display_feedback
     end
   end
 end
