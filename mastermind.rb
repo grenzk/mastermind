@@ -67,26 +67,34 @@ class Mastermind
 
   def place_color(count)
     color = pick_color
-    puts 'Place your color. [1 - 4]'
 
-    while (user_input = gets.chomp.to_i)
-      case user_input
-      when 0
-        puts "\nInvalid input. Try again.\nPlace your color. [1 - 4]"
-      else
-        idx = user_input - 1
+    handle_color_placement(color)
 
-        if position_valid?(idx)
-          slots[idx] = color
-          break
-        else
-          puts "\nThe position is already taken.\nPlace your color. [1 - 4]"
-        end
-      end
-    end
     system 'clear'
     display_attempts(count)
     display_row
+  end
+
+  def handle_color_placement(color)
+    loop do
+      user_input = integer_as_input
+      idx = user_input - 1
+
+      if position_valid?(idx)
+        slots[idx] = color
+        break
+      end
+
+      puts "\nThe position is already taken."
+    end
+  end
+
+  def integer_as_input
+    puts 'Place your color. [1 - 4]'
+    Integer(gets.chomp)
+  rescue StandardError
+    puts "\nPlease enter a valid number."
+    retry
   end
 
   def display_feedback
