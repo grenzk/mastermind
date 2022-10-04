@@ -16,7 +16,7 @@ module Output
   end
 
   def display_feedback
-    feedback = smaller_slots.map { |key| FEEDBACK[key] }
+    feedback = smaller_slots.map { |key| Constants::FEEDBACK[key] }
     puts "feedback: | #{feedback[0]} | #{feedback[1]} | #{feedback[2]} | #{feedback[3]} |\n "
   end
 end
