@@ -33,8 +33,12 @@ class Mastermind
     idx.between?(0, 3) && slot_occupied?(idx)
   end
 
+  def color_not_picked?(user_input)
+    slots.none?(CHOICES[user_input])
+  end
+
   def color_input_valid?(user_input)
-    'roygbiv'.match?(user_input) && slots.none?(CHOICES[user_input])
+    'roygbiv'.match?(user_input)
   end
 
   def pick_color
