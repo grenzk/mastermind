@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # For displaying data
-module Output
+module Outputs
   def display_title
     puts "\nGUESS THE SECRET CODE.\ncolors: ROYGBIV"
     display_row

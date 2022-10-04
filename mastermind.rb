@@ -2,13 +2,13 @@
 
 require_relative 'mastermind/constants'
 require_relative 'mastermind/helpers'
-require_relative 'mastermind/output'
+require_relative 'mastermind/outputs'
 
 # Mastermind Game
 class Mastermind
   include Constants
   include Helpers
-  include Output
+  include Outputs
 
   attr_reader :secret_code, :slots, :smaller_slots
 
