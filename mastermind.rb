@@ -29,11 +29,11 @@ class Mastermind
     slots.all? { |color| COLORS.include?(color) }
   end
 
-  def valid_place?(idx)
+  def position_valid?(idx)
     idx.between?(0, 3) && slot_occupied?(idx)
   end
 
-  def valid_pick?(user_input)
+  def color_input_valid?(user_input)
     'roygbiv'.match?(user_input) && slots.none?(CHOICES[user_input])
   end
 
@@ -41,7 +41,7 @@ class Mastermind
     puts 'Pick your color. [roygbiv]'
     user_input = gets.chomp.downcase
 
-    valid_pick?(user_input) ? CHOICES[user_input] : pick_color
+    color_input_valid?(user_input) ? CHOICES[user_input] : pick_color
   end
 
   def place_color
@@ -57,7 +57,7 @@ class Mastermind
 
     if player_input
       idx = player_input - 1
-      valid_place?(idx) ? slots[idx] = color : place_color
+      position_valid?(idx) ? slots[idx] = color : place_color
     else
       place_color
     end
