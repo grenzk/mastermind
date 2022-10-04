@@ -21,6 +21,17 @@ class Mastermind
     @smaller_slots = ['', '', '', '']
   end
 
+  def valid_pick?(user_input)
+    'roygbiv'.match?(user_input) && slots.none?(CHOICES[user_input])
+  end
+
+  def pick_color
+    puts 'Pick your color. [roygbiv]'
+    user_input = gets.chomp.downcase
+
+    valid_pick?(user_input) ? CHOICES[user_input] : pick_color
+  end
+
   def display_row
     puts "| #{slots[0]} | #{slots[1]} | #{slots[2]} | #{slots[3]} |"
     puts '-------------'
@@ -29,3 +40,4 @@ class Mastermind
 end
 
 game = Mastermind.new
+game.pick_color
