@@ -60,18 +60,20 @@ class Mastermind
     color = pick_color
     puts 'Place your color. [1 - 4]'
 
-    player_input =
-      begin
-        Integer(gets)
-      rescue StandardError
-        false
-      end
+    while (user_input = gets.chomp.to_i)
+      case user_input
+      when 0
+        puts "\nInvalid input. Try again.\nPlace your color. [1 - 4]"
+      else
+        idx = user_input - 1
 
-    if player_input
-      idx = player_input - 1
-      position_valid?(idx) ? slots[idx] = color : place_color
-    else
-      place_color
+        if position_valid?(idx)
+          slots[idx] = color
+          break
+        else
+          puts "\nThe position is already taken.\nPlace your color. [1 - 4]"
+        end
+      end
     end
     display_row
   end
@@ -86,4 +88,4 @@ class Mastermind
 end
 
 game = Mastermind.new
-game.place_color
+game.play
