@@ -1,18 +1,14 @@
 # frozen_string_literal: true
 
+require_relative 'mastermind/constants'
+require_relative 'mastermind/helpers'
+require_relative 'mastermind/output'
+
 # Mastermind Game
 class Mastermind
-  CHOICES = {
-    'r' => 'red',
-    'o' => 'orange',
-    'y' => 'yellow',
-    'g' => 'green',
-    'b' => 'blue',
-    'i' => 'indigo',
-    'v' => 'violet'
-  }.freeze
-  FEEDBACK = { false => 'white', true => 'black' }.freeze
-  COLORS = CHOICES.values
+  include Constants
+  include Helpers
+  include Output
 
   attr_reader :secret_code, :slots, :smaller_slots
 
@@ -20,34 +16,6 @@ class Mastermind
     @secret_code = COLORS.sample(4)
     @slots = ['', '', '', '']
     @smaller_slots = []
-  end
-
-  def slot_occupied?(idx)
-    slots[idx].empty?
-  end
-
-  def slots_full?
-    slots.all? { |color| COLORS.include?(color) }
-  end
-
-  def won?
-    secret_code.eql?(slots)
-  end
-
-  def position_valid?(idx)
-    idx.between?(0, 3) && slot_occupied?(idx)
-  end
-
-  def correct_position?(color)
-    secret_code.index(color) == slots.index(color)
-  end
-
-  def color_not_picked?(user_input)
-    slots.none?(CHOICES[user_input])
-  end
-
-  def color_input_valid?(user_input)
-    'roygbiv'.match?(user_input)
   end
 
   def pick_color
@@ -95,24 +63,6 @@ class Mastermind
   rescue StandardError
     puts "\nPlease enter a valid number."
     retry
-  end
-
-  def display_feedback
-    feedback = smaller_slots.map { |key| FEEDBACK[key] }
-    puts "feedback: | #{feedback[0]} | #{feedback[1]} | #{feedback[2]} | #{feedback[3]} |\n "
-  end
-
-  def display_row
-    puts "\nslots: | #{slots[0]} | #{slots[1]} | #{slots[2]} | #{slots[3]} |\n "
-  end
-
-  def display_attempts(count)
-    puts "No. of attempts: #{count}"
-  end
-
-  def display_title
-    puts "\nGUESS THE SECRET CODE.\ncolors: ROYGBIV"
-    display_row
   end
 
   def play
