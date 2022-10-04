@@ -25,6 +25,10 @@ class Mastermind
     slots[idx].empty?
   end
 
+  def slots_full?
+    slots.all? { |color| COLORS.include?(color) }
+  end
+
   def valid_place?(idx)
     idx.between?(0, 3) && slot_occupied?(idx)
   end
@@ -64,6 +68,10 @@ class Mastermind
     puts "| #{slots[0]} | #{slots[1]} | #{slots[2]} | #{slots[3]} |"
     puts '-------------'
     puts "| #{smaller_slots[0]} | #{smaller_slots[1]} | #{smaller_slots[2]} | #{smaller_slots[3]} |"
+  end
+
+  def play
+    place_color until slots_full?
   end
 end
 
