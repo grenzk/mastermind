@@ -128,6 +128,9 @@ class Mastermind
     display_title
 
     play
+
+    puts 'You lose! The mastermind wins.' unless won?
+    puts "Well done codebreaker! Here's a cookie!"
   end
 end
 
