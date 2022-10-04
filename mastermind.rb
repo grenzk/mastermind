@@ -21,6 +21,14 @@ class Mastermind
     @smaller_slots = ['', '', '', '']
   end
 
+  def slot_occupied?(idx)
+    slots[idx].empty?
+  end
+
+  def valid_place?(idx)
+    idx.between?(0, 3) && slot_occupied?(idx)
+  end
+
   def valid_pick?(user_input)
     'roygbiv'.match?(user_input) && slots.none?(CHOICES[user_input])
   end
@@ -32,6 +40,26 @@ class Mastermind
     valid_pick?(user_input) ? CHOICES[user_input] : pick_color
   end
 
+  def place_color
+    color = pick_color
+    puts 'Place your color. [1 - 4]'
+
+    player_input =
+      begin
+        Integer(gets)
+      rescue StandardError
+        false
+      end
+
+    if player_input
+      idx = player_input - 1
+      valid_place?(idx) ? slots[idx] = color : place_color
+    else
+      place_color
+    end
+    display_row
+  end
+
   def display_row
     puts "| #{slots[0]} | #{slots[1]} | #{slots[2]} | #{slots[3]} |"
     puts '-------------'
@@ -40,4 +68,4 @@ class Mastermind
 end
 
 game = Mastermind.new
-game.pick_color
+game.place_color
