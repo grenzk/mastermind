@@ -89,6 +89,15 @@ class Mastermind
 
   def play
     place_color until slots_full?
+
+    if secret_code.eql?(slots)
+      puts 'You win!'
+    else
+      guesses = secret_code.intersection(slots)
+      unless guesses.empty?
+        guesses.each { |color| smaller_slots << correct_position?(color) }
+      end
+    end
   end
 end
 
