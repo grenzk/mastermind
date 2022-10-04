@@ -114,6 +114,12 @@ class Mastermind
       display_feedback
     end
   end
+
+  def start
+    display_title
+
+    play
+  end
 end
 
 game = Mastermind.new
