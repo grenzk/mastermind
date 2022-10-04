@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# For input validations and game flow
 module Helpers
   def color_input_valid?(user_input)
     'roygbiv'.match?(user_input)
