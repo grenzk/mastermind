@@ -30,6 +30,10 @@ class Mastermind
     slots.all? { |color| COLORS.include?(color) }
   end
 
+  def won?
+    secret_code.eql?(slots)
+  end
+
   def position_valid?(idx)
     idx.between?(0, 3) && slot_occupied?(idx)
   end
