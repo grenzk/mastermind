@@ -54,13 +54,13 @@ class Mastermind
     puts 'Pick your color. [roygbiv]'
     user_input = gets.chomp.downcase
 
-    if color_input_valid?(user_input) && color_not_picked?(user_input)
-      return CHOICES[user_input]
-    elsif color_input_valid?(user_input) && !color_not_picked?(user_input)
-      puts "\nYou already picked the color."
-    else
-      puts "\nInvalid input. Try again."
-    end
+    cond_one = color_input_valid?(user_input) && color_not_picked?(user_input)
+    cond_two = color_input_valid?(user_input) && !color_not_picked?(user_input)
+
+    return CHOICES[user_input] if cond_one
+
+    puts "\nYou already picked the color." if cond_two
+    puts "\nInvalid input. Try again." unless cond_two
 
     pick_color
   end
