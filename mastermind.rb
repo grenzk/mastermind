@@ -34,6 +34,10 @@ class Mastermind
     idx.between?(0, 3) && slot_occupied?(idx)
   end
 
+  def correct_position?(color)
+    secret_code.index(color) == slots.index(color)
+  end
+
   def color_not_picked?(user_input)
     slots.none?(CHOICES[user_input])
   end
