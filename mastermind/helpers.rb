@@ -26,6 +26,10 @@ module Helpers
     secret_code.index(color) == slots.index(color)
   end
 
+  def first_chr(colors)
+    colors.map(&:chr).join
+  end
+
   def won?
     secret_code.eql?(slots)
   end
