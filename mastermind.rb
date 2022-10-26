@@ -89,6 +89,8 @@ class Mastermind
 
     play
 
+    display_secret_code
+
     puts "Well done codebreaker! Here's a cookie!" if won?
     puts 'You lose! The mastermind wins.' unless won?
   end

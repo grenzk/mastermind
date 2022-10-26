@@ -24,4 +24,10 @@ module Outputs
     puts 'history: '
     puts guesses_and_feedbacks
   end
+
+  def display_secret_code
+    puts 'The secret code is...'
+    sleep 3
+    puts "#{secret_code}\n "
+  end
 end
