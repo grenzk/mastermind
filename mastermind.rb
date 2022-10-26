@@ -23,6 +23,8 @@ class Mastermind
     puts 'Pick your color. [roygbiv]'
     user_input = gets.chomp.downcase
 
+    exit if user_input == 'q'
+
     cond_one = color_input_valid?(user_input) && color_not_picked?(user_input)
     cond_two = color_input_valid?(user_input) && !color_not_picked?(user_input)
 
@@ -48,6 +50,9 @@ class Mastermind
   def handle_color_placement(color)
     loop do
       user_input = integer_as_input
+
+      exit if user_input == 5
+
       idx = user_input - 1
 
       if position_valid?(idx)
