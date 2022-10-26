@@ -30,6 +30,11 @@ module Helpers
     colors.map(&:chr).join
   end
 
+  def clear_slots
+    slots.map! { '' }
+    smaller_slots.clear
+  end
+
   def won?
     secret_code.eql?(slots)
   end

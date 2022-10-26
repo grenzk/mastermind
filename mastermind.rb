@@ -80,9 +80,7 @@ class Mastermind
 
       guesses_and_feedbacks << "#{first_chr(slots)} || #{first_chr(smaller_slots)}"
 
-      slots.map! { '' }
-
-      smaller_slots.clear
+      clear_slots
     end
   end
 
