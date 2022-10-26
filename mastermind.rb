@@ -93,6 +93,24 @@ class Mastermind
 
     puts "Well done codebreaker! Here's a cookie!" if won?
     puts 'You lose! The mastermind wins.' unless won?
+
+    restart_game
+  end
+
+  def restart_game
+    loop do
+      puts 'Play again?'
+      user_input = gets.chomp.downcase
+
+      if user_input == 'y'
+        reset
+        start
+      end
+
+      break if user_input == 'n'
+
+      puts 'Invalid input. Try again.'
+    end
   end
 end
 

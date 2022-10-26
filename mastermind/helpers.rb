@@ -35,6 +35,12 @@ module Helpers
     smaller_slots.clear
   end
 
+  def reset
+    system 'clear'
+    clear_slots
+    guesses_and_feedbacks.clear
+  end
+
   def won?
     secret_code.eql?(slots)
   end
