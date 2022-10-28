@@ -38,7 +38,7 @@ module Helpers
   def reset
     system 'clear'
     clear_slots
-    guesses_and_feedbacks.clear
+    guesses_with_feedback.clear
   end
 
   def won?

@@ -10,13 +10,13 @@ class Mastermind
   include Helpers
   include Outputs
 
-  attr_reader :secret_code, :slots, :smaller_slots, :guesses_and_feedbacks
+  attr_reader :secret_code, :slots, :smaller_slots, :guesses_with_feedback
 
   def initialize
     @secret_code = COLORS.sample(4)
     @slots = ['', '', '', '']
     @smaller_slots = []
-    @guesses_and_feedbacks = []
+    @guesses_with_feedback = []
   end
 
   def pick_color
@@ -43,7 +43,7 @@ class Mastermind
 
     system 'clear'
     display_attempts(count)
-    display_guesses
+    display_history
     display_row
   end
 
@@ -83,10 +83,14 @@ class Mastermind
 
       display_feedback
 
-      guesses_and_feedbacks << "#{first_chr(slots)} || #{first_chr(smaller_slots)}"
+      add_move_to_history
 
       clear_slots
     end
+  end
+
+  def add_move_to_history
+    guesses_with_feedback << "#{first_chr(slots)} || #{first_chr(smaller_slots)}"
   end
 
   def start

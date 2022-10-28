@@ -20,9 +20,9 @@ module Outputs
     puts "feedback: | #{smaller_slots[0]} | #{smaller_slots[1]} | #{smaller_slots[2]} | #{smaller_slots[3]} |\n "
   end
 
-  def display_guesses
+  def display_history
     puts 'history: '
-    puts guesses_and_feedbacks
+    puts guesses_with_feedback
   end
 
   def display_secret_code
