@@ -8,4 +8,4 @@ I have built a simple Mastermind CLI game using Object-oriented programming (OOP
 
 ## Source
 
-How To Play Mastermind (https://www.youtube.com/watch?v=wsYPsrzCKiA)
+[How To Play Mastermind](https://www.youtube.com/watch?v=wsYPsrzCKiA)
