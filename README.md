@@ -1,6 +1,6 @@
 # Mastermind
 
-I have built a simple mastermind cli game using Object-oriented programming (OOP) in Ruby.
+I have built a simple Mastermind CLI game using Object-oriented programming (OOP) in Ruby.
 
 ![mastermind-game](./images/mastermind-game.png)
 ![mastermind-cli-1](./images/mastermind-cli-1.png)
